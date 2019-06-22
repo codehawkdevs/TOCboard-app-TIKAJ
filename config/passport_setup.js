@@ -12,17 +12,21 @@ passport.use(
     },
     (accessToken, refreshToken, profile, done) => {
       // passport callback function
-      console.log("passport method fired");
-      console.log(profile);
-      new User({
-        _id: profile.emails[0].value,
-        first_name: profile.name.givenName,
-        last_name: profile.name.familyName
-      })
-        .save()
-        .then(newUser => {
-          console.log("user added to db");
-        });
+      // user check in database
+      User.findOne({ _id: profile.emails[0].value }).then(currentUser => {
+        if (currentUser) {
+        } else {
+          new User({
+            _id: profile.emails[0].value,
+            first_name: profile.name.givenName,
+            last_name: profile.name.familyName
+          })
+            .save()
+            .then(newUser => {
+              console.log("user added to db");
+            });
+        }
+      });
     }
   )
 );
