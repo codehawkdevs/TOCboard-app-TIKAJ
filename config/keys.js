@@ -9,6 +9,6 @@ module.exports = {
       "mongodb+srv://tikaj:tikaj@syncapp-b0huw.mongodb.net/test?retryWrites=true&w=majority"
   },
   session: {
-    cookieKey: "tikajisawesome"
+    cookieKey: "tikajiswesome"
   }
 };

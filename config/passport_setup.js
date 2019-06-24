@@ -23,11 +23,8 @@ passport.use(
     },
     (accessToken, refreshToken, profile, done) => {
       // passport callback function
-      console.log("passport method fired");
-      console.log(profile);
       User.findOne({ _id: profile.emails[0].value }).then(currentUser => {
         if (currentUser) {
-          console.log("user already exist");
           done(null, currentUser);
           // user check in database
         } else {

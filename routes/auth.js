@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const passport = require("passport");
-const cookieSession = require("cookie-session");
+const session = require("express-session");
 
 // auth login
 router.get("/login", (req, res) => {
@@ -9,9 +9,9 @@ router.get("/login", (req, res) => {
 
 // auth logout
 router.get("/logout", (req, res) => {
-  req.logOut();
-  res.clearCookie("sid", { path: "/" });
-  res.redirect("/");
+  req.logout();
+  req.session = null;
+  res.redirect("/"); //Inside a callback… bulletproof!
 });
 
 //auth with google
