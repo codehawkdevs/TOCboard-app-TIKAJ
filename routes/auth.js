@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const passport = require("passport");
+const cookieSession = require("cookie-session");
 
 // auth login
 router.get("/login", (req, res) => {
@@ -8,7 +9,8 @@ router.get("/login", (req, res) => {
 
 // auth logout
 router.get("/logout", (req, res) => {
-  req.logout();
+  req.logOut();
+  res.clearCookie("sid", { path: "/" });
   res.redirect("/");
 });
 

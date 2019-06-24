@@ -29,6 +29,7 @@ passport.use(
         if (currentUser) {
           console.log("user already exist");
           done(null, currentUser);
+          // user check in database
         } else {
           new User({
             _id: profile.emails[0].value,
