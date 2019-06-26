@@ -31,7 +31,8 @@ passport.use(
           new User({
             _id: profile.emails[0].value,
             first_name: profile.name.givenName,
-            last_name: profile.name.familyName
+            last_name: profile.name.familyName,
+            is_admin: true
           })
             .save()
             .then(newUser => {

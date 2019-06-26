@@ -4,10 +4,12 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
   _id: {
     type: String,
-    unique: true
+    unique: true,
+    required: true
   },
   first_name: String,
   last_name: String,
+  is_admin: Boolean,
   tags: Array
 });
 

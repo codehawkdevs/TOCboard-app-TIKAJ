@@ -1,11 +1,13 @@
 const express = require("express");
 const authRoutes = require("./routes/auth");
 const profileRoutes = require("./routes/profile");
+const tagsRoutes = require("./routes/tags");
 const passportSetup = require("./config/passport_setup");
 const mongoose = require("mongoose");
 const keys = require("./config/keys");
 const cookieSession = require("cookie-session");
 const passport = require("passport");
+const bodyParser = require("body-parser");
 // setup view engine
 
 const app = express();
@@ -21,7 +23,10 @@ app.use(
 //initialize passport
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(passport.session());
+app.use(bodyParser.urlencoded());
 
+app.use(bodyParser.json());
 mongoose.connect(keys.mongodb.dbURI, () => {
   console.log("MongoDB Connected");
 });
@@ -29,6 +34,7 @@ mongoose.connect(keys.mongodb.dbURI, () => {
 // Routes setup
 app.use("/auth", authRoutes);
 app.use("/profile", profileRoutes);
+app.use("/tags", tagsRoutes);
 
 // create home route
 app.get("/", (req, res) => {
