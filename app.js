@@ -30,7 +30,7 @@ app.use(bodyParser.json());
 mongoose.connect(keys.mongodb.dbURI, () => {
   console.log("MongoDB Connected");
 });
-
+app.use(express.static(__dirname + "/public"));
 // Routes setup
 app.use("/auth", authRoutes);
 app.use("/profile", profileRoutes);
