@@ -1,6 +1,7 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20");
 const keys = require("./keys");
+const GitLabStrategy = require("passport-gitlab2");
 const User = require("../models/user");
 
 passport.serializeUser((user, done) => {
@@ -40,6 +41,21 @@ passport.use(
               done(null, newUser);
             });
         }
+      });
+    }
+  )
+);
+passport.use(
+  new GitLabStrategy(
+    {
+      clientID: keys.gitlab.clientID,
+      clientSecret: keys.gitlab.clientSecret,
+      callbackURL: "http://localhost:3000/auth/gitlab/callback"
+    },
+    function(accessToken, refreshToken, profile, cb) {
+      User.findOrCreate({ gitlabId: profile.id }, function(err, user) {
+        console.log(user);
+        return cb(err, user);
       });
     }
   )

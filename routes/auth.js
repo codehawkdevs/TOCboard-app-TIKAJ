@@ -22,6 +22,24 @@ router.get(
   })
 );
 
+//auth with gitlab
+router.get(
+  "/gitlab",
+  passport.authenticate("gitlab", {
+    scope: ["email"]
+  })
+);
+router.get(
+  "/auth/gitlab/callback",
+  passport.authenticate("gitlab", {
+    failureRedirect: "/login"
+  }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect("/profile/");
+  }
+);
+
 router.get("/google/redirect", passport.authenticate("google"), (req, res) => {
   res.redirect("/profile/");
 });
