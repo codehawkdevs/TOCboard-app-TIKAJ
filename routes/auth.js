@@ -26,16 +26,16 @@ router.get(
 router.get(
   "/gitlab",
   passport.authenticate("gitlab", {
-    scope: ["email"]
+    scope: ["read_user"]
   })
 );
 router.get(
-  "/auth/gitlab/callback",
+  "/gitlab/callback",
   passport.authenticate("gitlab", {
-    failureRedirect: "/login"
+    failureRedirect: "/auth/login"
   }),
-  function(req, res) {
-    // Successful authentication, redirect home.
+  (req, res) => {
+    // Successful authentication, redirect profile.
     res.redirect("/profile/");
   }
 );

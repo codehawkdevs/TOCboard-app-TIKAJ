@@ -50,12 +50,29 @@ passport.use(
     {
       clientID: keys.gitlab.clientID,
       clientSecret: keys.gitlab.clientSecret,
-      callbackURL: "http://localhost:3000/auth/gitlab/callback"
+      callbackURL: "/auth/gitlab/callback"
     },
     function(accessToken, refreshToken, profile, cb) {
-      User.findOrCreate({ gitlabId: profile.id }, function(err, user) {
-        console.log(user);
-        return cb(err, user);
+      console.log(profile.displayName);
+      // passport callback function
+      User.findOne({ _id: profile.emails[0].value }).then(currentUser => {
+        if (currentUser) {
+          done(null, currentUser);
+          // user check in database
+        } else {
+          const name = profile.displayName.split(" ");
+          new User({
+            _id: profile.emails[0].value,
+            first_name: name[0],
+            last_name: name[1],
+            is_admin: true
+          })
+            .save()
+            .then(newUser => {
+              console.log("user added to db");
+              cb(null, newUser);
+            });
+        }
       });
     }
   )

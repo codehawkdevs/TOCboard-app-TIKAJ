@@ -13,8 +13,8 @@ module.exports = {
   },
   gitlab: {
     clientID:
-      "37a63005f32cd2a479a5879cf86cc5c0745c270ac3655e16bae0e1151f410444",
+      "6b2c631842d9ea27b3faf4df69fb665d853c41c7b53b8c07512b79a629fe8a9b",
     clientSecret:
-      "8392871b33afaa265dce6a080842c517d03bd12018b1d7fb1ca335f88c45c189"
+      "80fbb25b6050079a3e9bf420c3e2e22a4accee1a183c20759af3d7efb2b81278"
   }
 };

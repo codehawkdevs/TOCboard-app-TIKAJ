@@ -23,7 +23,6 @@ app.use(
 //initialize passport
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(passport.session());
 app.use(bodyParser.urlencoded());
 
 app.use(bodyParser.json());
