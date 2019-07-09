@@ -1,10 +1,9 @@
 const router = require("express").Router();
 
 router.get("/", (req, res) => {
-  try {
+  if (req.user) {
     res.render("profile", { user: req.user });
-    console.log(req.user);
-  } catch (err) {
+  } else {
     res.redirect("/auth/login");
   }
 });
