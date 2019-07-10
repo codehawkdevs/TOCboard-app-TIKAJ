@@ -45,48 +45,26 @@
       </div>
       <div class="col">
         <form class="form-signin">
-          <h1 class="h3 mb-3 font-weight-normal">TikLab Sign-In</h1>
-          <label for="inputEmail" class="sr-only">Email or Username</label>
-          <input
-            type="email"
-            id="inputEmail"
-            class="form-control"
-            placeholder="Email or Username"
-            required=""
-            autofocus=""
-          />
-          <label for="inputPassword" class="sr-only">Password</label>
-          <input
-            type="password"
-            id="inputPassword"
-            class="form-control"
-            placeholder="Password"
-            required=""
-          />
-          <div class="checkbox mb-3">
-            <label>
-              <input type="checkbox" value="remember-me" /> Remember me
-            </label>
-          </div>
-          <button type="button" class="btn btn-primary btn-lg">Sign-In</button>
+          <h1 class="h3 mb-3 font-weight-normal">TOCboard</h1>
+          <h6 class="info">
+            All team management in one place,<br />
+            searchable and acessible anywhere.
+          </h6>
           <br />
-          <br />
-          <p>Don't have an account? <a href="#">Create one now</a></p>
-          <p><a href="#">I forgot my password</a></p>
-
-          <h2>OR</h2>
-          <br />
-
+          <p>Sign-in with:</p>
           <button
             type="button"
-            class="btn btn-secondary btn-lg btn-block"
+            class="btn btn-gitlab btn-lg btn-block"
             onclick="window.location.href = '/auth/gitlab'"
           >
             <img src="/img/gitlab.png" height="25px" /> Login with GitLab
           </button>
+          <br />
+          <h5>OR</h5>
+          <br />
           <button
             type="button"
-            class="btn btn-primary btn-lg btn-block"
+            class="btn btn-danger btn-lg btn-block"
             onclick="window.location.href = '/auth/google'"
           >
             <img src="/img/google.png" height="30px" /> Login with Google

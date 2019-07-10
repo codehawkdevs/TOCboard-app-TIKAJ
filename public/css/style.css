@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Oxygen&display=swap");
+
 html,
 body {
   height: 100%;
@@ -10,11 +12,22 @@ body {
   align-items: right;
   -webkit-box-pack: right;
   justify-content: right;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-top: 10%;
+  padding-bottom: 20%;
   background-color: #f5f5f5;
+  font-family: "Oxygen", sans-serif;
 }
 
+.btn-gitlab {
+  background-color: #651f88;
+  color: white;
+}
+.btn-gitlab:hover {
+  background-color: #512369;
+}
+.info {
+  color: #798394;
+}
 .form-signin {
   width: 100%;
   max-width: 330px;
