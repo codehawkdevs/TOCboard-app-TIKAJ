@@ -2,7 +2,9 @@ const router = require("express").Router();
 const User = require("../models/user");
 router.get("/", (req, res) => {
   if (req.user) {
-    res.send("authenticated");
+    res.send(
+      "authenticated. send a POST request using postman for adding the tags with {email, tags} parameters"
+    );
   } else {
     res.send("you are not allowed to access this.");
   }

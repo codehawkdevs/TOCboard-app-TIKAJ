@@ -2,6 +2,7 @@ const express = require("express");
 const authRoutes = require("./routes/auth");
 const profileRoutes = require("./routes/profile");
 const tagsRoutes = require("./routes/tags");
+const adminRoute = require("./routes/make_admin");
 const passportSetup = require("./config/passport_setup");
 const mongoose = require("mongoose");
 const keys = require("./config/keys");
@@ -34,6 +35,7 @@ app.use(express.static(__dirname + "/public"));
 app.use("/auth", authRoutes);
 app.use("/profile", profileRoutes);
 app.use("/tags", tagsRoutes);
+app.use("/admin", adminRoute);
 
 // create home route
 app.get("/", (req, res) => {
