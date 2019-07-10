@@ -50,14 +50,15 @@ passport.use(
     {
       clientID: keys.gitlab.clientID,
       clientSecret: keys.gitlab.clientSecret,
-      callbackURL: "/auth/gitlab/callback"
+      callbackURL: "/auth/gitlab/callback",
+      baseURL: "https://lab.tik.co/"
     },
     function(accessToken, refreshToken, profile, cb) {
       console.log(profile.displayName);
       // passport callback function
       User.findOne({ _id: profile.emails[0].value }).then(currentUser => {
         if (currentUser) {
-          done(null, currentUser);
+          cb(null, currentUser);
           // user check in database
         } else {
           const name = profile.displayName.split(" ");
