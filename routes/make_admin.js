@@ -3,9 +3,13 @@ const User = require("../models/user");
 
 router.get("/", (req, res) => {
   if (req.user.is_admin) {
-    res.send(
-      "you are an admin and can make changes.. send a POST request using postman"
-    );
+    User.find({}).exec((err, users) => {
+      if (err) {
+        console.log(err);
+      } else {
+        return res.render("admin", { users: users, user: req.user });
+      }
+    });
   } else {
     res.send("you are not authorised to access this");
   }
