@@ -10,7 +10,8 @@ const userSchema = new Schema({
   first_name: String,
   last_name: String,
   is_admin: Boolean,
-  tags: Array
+  tags: Array,
+  fileFolderIDs: Array
 });
 
 const User = mongoose.model("user", userSchema);
