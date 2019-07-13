@@ -80,7 +80,7 @@
         if (data.action == google.picker.Action.PICKED) {
           console.log(data);
           var fileId = data.docs[0].id;
-          $.post("/", { file: fileId });
+          $.post("/profile/picker/", { file: fileId });
         }
       }
     </script>
