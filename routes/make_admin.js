@@ -1,6 +1,8 @@
 const router = require("express").Router();
 const User = require("../models/user");
 
+const adminController = require("../controller/admin");
+
 router.get("/", (req, res) => {
   if (req.user.is_admin) {
     User.find({}).exec((err, users) => {
@@ -31,5 +33,7 @@ router.post("/", (req, res) => {
     }
   });
 });
+
+router.post("/populateUsers", adminController.getUsers);
 
 module.exports = router;
